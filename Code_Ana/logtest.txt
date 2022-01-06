@@ -1,0 +1,83 @@
+
+Processing run_Skim.C(1,1,2017,1,1,9)...
+reading List_File/listMC_inputSkim.txt
+reading List_File/listMC_outputSkim.txt
+
+ [---------------<< Program starts >>---------------]
+ [                                                  ]
+ [    [+] Task: Create skimmed trees                ]
+ [    [+] List of parameters:                       ]
+ [     |-- Data type:           MC                  ]
+ [     |-- Reproccessing:       Legacy              ]
+ [     |-- Lepton type:         electron            ]
+ [     |-- Year:                2017                ]
+ [     `-- Number of files:     09                  ]
+ [                                                  ]
+ [--------------------------------------------------]
+
+ Warning:
+ [!] Last file [9] is out of range [1,7]
+  `-- Exceeding file(s) will be ignored
+
+ NOTE: Main loop is starting
+ [+] Start processing file #[01] in the list:
+  |-- Input:     /data6/ggNtuples/V10_02_10_07/job_fall17_DYJetsToLL_m50_aMCatNLO*
+  |-- xsection:  6077.220215
+  |-- removePho: 1
+  |-- output:    /home/hoa/Task_ZgSMP/Output/Tree_SkimMC/tree17_DYJets.root
+  |-- Path to input:  [/data6/ggNtuples/V10_02_10_07/job_fall17_DYJetsToLL_m50_aMCatNLO*]
+  `-- Error: No input found
+
+ [+] Start processing file #[02] in the list:
+  |-- Input:     /data6/ggNtuples/V10_02_10_07/job_fall17_WJetsToLNu_{MG,MG_ext1}
+  |-- xsection:  61526.699219
+  |-- removePho: 0
+  |-- output:    /home/hoa/Task_ZgSMP/Output/Tree_SkimMC/tree17_WJets.root
+  |-- Path to input:  [/data6/ggNtuples/V10_02_10_07/job_fall17_WJetsToLNu_{MG,MG_ext1}]
+  `-- Error: No input found
+
+ [+] Start processing file #[03] in the list:
+  |-- Input:     /data6/ggNtuples/V10_02_10_07/job_fall17_WW
+  |-- xsection:  831.760010
+  |-- removePho: 0
+  |-- output:    /home/hoa/Task_ZgSMP/Output/Tree_SkimMC/tree17_WW.root
+  |-- Path to input:  [/data6/ggNtuples/V10_02_10_07/job_fall17_WW]
+  `-- Error: No input found
+
+ [+] Start processing file #[04] in the list:
+  |-- Input:     /data6/ggNtuples/V10_02_10_07/job_fall17_WZ
+  |-- xsection:  118.699997
+  |-- removePho: 0
+  |-- output:    /home/hoa/Task_ZgSMP/Output/Tree_SkimMC/tree17_WZ.root
+  |-- Path to input:  [/data6/ggNtuples/V10_02_10_07/job_fall17_WZ]
+  `-- Error: No input found
+
+ [+] Start processing file #[05] in the list:
+  |-- Input:     /data6/ggNtuples/V10_02_10_07/job_fall17_newPU_ZZ
+  |-- xsection:  47.130001
+  |-- removePho: 0
+  |-- output:    /home/hoa/Task_ZgSMP/Output/Tree_SkimMC/tree17_ZZ.root
+  |-- Path to input:  [/data6/ggNtuples/V10_02_10_07/job_fall17_newPU_ZZ]
+  `-- Error: No input found
+
+ [+] Start processing file #[06] in the list:
+  |-- Input:     /data6/ggNtuples/V10_02_10_07/job_fall17_newPU_TT_aMCatNLO
+  |-- xsection:  16.523001
+  |-- removePho: 0
+  |-- output:    /home/hoa/Task_ZgSMP/Output/Tree_SkimMC/tree17_TT.root
+  |-- Path to input:  [/data6/ggNtuples/V10_02_10_07/job_fall17_newPU_TT_aMCatNLO]
+  `-- Error: No input found
+
+ [+] Start processing file #[07] in the list:
+  |-- Input:     /data6/ggNtuples/V10_02_10_07/job_fall17_Zg_aMCatNLO
+  |-- xsection:  117.863998
+  |-- removePho: 0
+  |-- output:    /home/hoa/Task_ZgSMP/Output/Tree_SkimMC/tree17_Zg.root
+  |-- Path to input:  [/data6/ggNtuples/V10_02_10_07/job_fall17_Zg_aMCatNLO]
+  `-- Error: No input found
+
+ [!] Warning:
+  |-- Index [8] is out of range ([1,7])
+  `-- Exiting loop
+
+(int) 0
