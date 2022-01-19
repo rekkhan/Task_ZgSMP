@@ -1,0 +1,35 @@
+
+Processing run_Skim.C(1,1,2016,1,7,7)...
+reading List_File/listMC_inputSkim.txt
+reading List_File/listMC_outputSkim.txt
+
+ [---------------<< Program starts >>---------------]
+ [                                                  ]
+ [    [+] Task: Create skimmed trees                ]
+ [    [+] List of parameters:                       ]
+ [     |-- Data type:           MC                  ]
+ [     |-- Reproccessing:       Legacy              ]
+ [     |-- Lepton type:         electron            ]
+ [     |-- Year:                2016                ]
+ [     `-- Number of files:     01                  ]
+ [                                                  ]
+ [--------------------------------------------------]
+
+ Info: Main loop is starting
+ ---------------------------
+ [+] Start processing file #[07] in the list:
+  |-- Input info:
+  |   |-- Path to file(s):  [/data6/ggNtuples/V10_02_10_07/job_summer16_Zg_aMCatNLO]
+  |   |-- Reproc version:   [1]
+  |   |-- cross-section:    [117.863998]
+  |   `-- Reject photon:    [0]
+  |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/Tree_SkimMC/]
+  |-- Found:          [18134601] events
+  |-- Selected:       [5193196] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/Tree_SkimMC/tree16_Electron_Zg.root]
+  `-- Job's done:
+      |-- Prep time:   [0.002] hours
+      |-- Work time:   [2.628] hours
+      `-- Total time:  [2.629] hours
+
+(int) 0

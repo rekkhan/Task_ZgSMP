@@ -1,0 +1,35 @@
+
+Processing run_Skim.C(0,2,2017,1,2,2)...
+reading List_File/listDT_inputSkim.txt
+reading List_File/listDT_outputSkim.txt
+
+ [---------------<< Program starts >>---------------]
+ [                                                  ]
+ [    [+] Task: Create skimmed trees                ]
+ [    [+] List of parameters:                       ]
+ [     |-- Data type:           Data                ]
+ [     |-- Reproccessing:       Ultra-legacy        ]
+ [     |-- Lepton type:         electron            ]
+ [     |-- Year:                2017                ]
+ [     `-- Number of files:     01                  ]
+ [                                                  ]
+ [--------------------------------------------------]
+
+ Info: Main loop is starting
+ ---------------------------
+ [+] Start processing file #[02] in the list:
+  |-- Input info:
+  |   |-- Path to file(s):  [/data3/ggNtuples/V10_06_20_00/job_DoubleEG_Run2017C_UL]
+  |   |-- Reproc version:   [2]
+  |   |-- cross-section:    [0.000000]
+  |   `-- Reject photon:    [0]
+  |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/Tree_SkimDT/]
+  |-- Found:          [59675381] events
+  |-- Selected:       [12152919] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/Tree_SkimDT/tree17UL_Electron_RunC.root]
+  `-- Job's done:
+      |-- Prep time:   [0.003] hours
+      |-- Work time:   [5.733] hours
+      `-- Total time:  [5.736] hours
+
+(int) 0
