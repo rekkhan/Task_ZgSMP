@@ -1,0 +1,138 @@
+
+Processing run_Select.C(2017,1,1,2,5,5)...
+reading List_File/listMC_inputSelect.txt
+
+ [---------------<< Program starts >>---------------]
+ [                                                  ]
+ [    [+] Task: Create trees of preselection        ]
+ [    [+] List of parameters:                       ]
+ [     |-- Data type:           MC                  ]
+ [     |-- Lepton type:         muon                ]
+ [     |-- Year:                2017                ]
+ [     `-- Number of files:     01                  ]
+ [                                                  ]
+ [--------------------------------------------------]
+
+ Info: Main loop is starting
+ ---------------------------
+ [+] Start processing file #[05] for the [Signal] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectMC/tree17_Muon_ZZ.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Worst]
+  |   |-- ch.Iso @ Sel. step:     [Worst]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Signal/IsoType_WorstWorst/]
+  |   `-- cross-section:    [47.130001]
+  |-- Found:          [3808] events
+  |-- Selected:       [357] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Signal/IsoType_WorstWorst/hist17_Muon_ZZ.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.003] hours
+      `-- Total time:  [0.003] hours
+
+ [+] Start processing file #[05] for the [Signal] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectMC/tree17_Muon_ZZ.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Worst]
+  |   |-- ch.Iso @ Sel. step:     [Correct]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Signal/IsoType_WorstCorrect/]
+  |   `-- cross-section:    [47.130001]
+  |-- Found:          [3808] events
+  |-- Selected:       [703] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Signal/IsoType_WorstCorrect/hist17_Muon_ZZ.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.003] hours
+      `-- Total time:  [0.003] hours
+
+ [+] Start processing file #[05] for the [Signal] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectMC/tree17_Muon_ZZ.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Correct]
+  |   |-- ch.Iso @ Sel. step:     [Worst]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Signal/IsoType_CorrectWorst/]
+  |   `-- cross-section:    [47.130001]
+  |-- Found:          [3808] events
+  |-- Selected:       [357] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Signal/IsoType_CorrectWorst/hist17_Muon_ZZ.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.002] hours
+      `-- Total time:  [0.002] hours
+
+ [+] Start processing file #[05] for the [Signal] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectMC/tree17_Muon_ZZ.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Correct]
+  |   |-- ch.Iso @ Sel. step:     [Correct]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Signal/IsoType_CorrectCorrect/]
+  |   `-- cross-section:    [47.130001]
+  |-- Found:          [3808] events
+  |-- Selected:       [814] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Signal/IsoType_CorrectCorrect/hist17_Muon_ZZ.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.003] hours
+      `-- Total time:  [0.003] hours
+
+ [+] Start processing file #[05] for the [Sideband] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectMC/tree17_Muon_ZZ.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Worst]
+  |   |-- ch.Iso @ Sel. step:     [Worst]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Sideband/IsoType_WorstWorst/]
+  |   `-- cross-section:    [47.130001]
+  |-- Found:          [3808] events
+  |-- Selected:       [1326] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Sideband/IsoType_WorstWorst/hist17_Muon_ZZ.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.003] hours
+      `-- Total time:  [0.003] hours
+
+ [+] Start processing file #[05] for the [Sideband] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectMC/tree17_Muon_ZZ.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Worst]
+  |   |-- ch.Iso @ Sel. step:     [Correct]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Sideband/IsoType_WorstCorrect/]
+  |   `-- cross-section:    [47.130001]
+  |-- Found:          [3808] events
+  |-- Selected:       [985] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Sideband/IsoType_WorstCorrect/hist17_Muon_ZZ.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.002] hours
+      `-- Total time:  [0.002] hours
+
+ [+] Start processing file #[05] for the [Sideband] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectMC/tree17_Muon_ZZ.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Correct]
+  |   |-- ch.Iso @ Sel. step:     [Worst]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Sideband/IsoType_CorrectWorst/]
+  |   `-- cross-section:    [47.130001]
+  |-- Found:          [3808] events
+  |-- Selected:       [1947] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Sideband/IsoType_CorrectWorst/hist17_Muon_ZZ.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.003] hours
+      `-- Total time:  [0.003] hours
+
+ [+] Start processing file #[05] for the [Sideband] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectMC/tree17_Muon_ZZ.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Correct]
+  |   |-- ch.Iso @ Sel. step:     [Correct]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Sideband/IsoType_CorrectCorrect/]
+  |   `-- cross-section:    [47.130001]
+  |-- Found:          [3808] events
+  |-- Selected:       [1499] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Sideband/IsoType_CorrectCorrect/hist17_Muon_ZZ.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.003] hours
+      `-- Total time:  [0.003] hours
+
+(int) 0

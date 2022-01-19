@@ -1,0 +1,138 @@
+
+Processing run_Select.C(2018,1,1,1,1,1)...
+reading List_File/listMC_inputSelect.txt
+
+ [---------------<< Program starts >>---------------]
+ [                                                  ]
+ [    [+] Task: Create trees of preselection        ]
+ [    [+] List of parameters:                       ]
+ [     |-- Data type:           MC                  ]
+ [     |-- Lepton type:         electron            ]
+ [     |-- Year:                2018                ]
+ [     `-- Number of files:     01                  ]
+ [                                                  ]
+ [--------------------------------------------------]
+
+ Info: Main loop is starting
+ ---------------------------
+ [+] Start processing file #[01] for the [Signal] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectMC/tree18_Electron_DYJets.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Worst]
+  |   |-- ch.Iso @ Sel. step:     [Worst]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Signal/IsoType_WorstWorst/]
+  |   `-- cross-section:    [6077.220215]
+  |-- Found:          [454215] events
+  |-- Selected:       [3217] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Signal/IsoType_WorstWorst/hist18_Electron_DYJets.root]
+  `-- Job's done:
+      |-- Prep time:   [0.001] hours
+      |-- Work time:   [0.164] hours
+      `-- Total time:  [0.164] hours
+
+ [+] Start processing file #[01] for the [Signal] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectMC/tree18_Electron_DYJets.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Worst]
+  |   |-- ch.Iso @ Sel. step:     [Correct]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Signal/IsoType_WorstCorrect/]
+  |   `-- cross-section:    [6077.220215]
+  |-- Found:          [454215] events
+  |-- Selected:       [9574] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Signal/IsoType_WorstCorrect/hist18_Electron_DYJets.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.152] hours
+      `-- Total time:  [0.152] hours
+
+ [+] Start processing file #[01] for the [Signal] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectMC/tree18_Electron_DYJets.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Correct]
+  |   |-- ch.Iso @ Sel. step:     [Worst]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Signal/IsoType_CorrectWorst/]
+  |   `-- cross-section:    [6077.220215]
+  |-- Found:          [454215] events
+  |-- Selected:       [3217] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Signal/IsoType_CorrectWorst/hist18_Electron_DYJets.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.124] hours
+      `-- Total time:  [0.124] hours
+
+ [+] Start processing file #[01] for the [Signal] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectMC/tree18_Electron_DYJets.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Correct]
+  |   |-- ch.Iso @ Sel. step:     [Correct]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Signal/IsoType_CorrectCorrect/]
+  |   `-- cross-section:    [6077.220215]
+  |-- Found:          [454215] events
+  |-- Selected:       [12140] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Signal/IsoType_CorrectCorrect/hist18_Electron_DYJets.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.119] hours
+      `-- Total time:  [0.119] hours
+
+ [+] Start processing file #[01] for the [Sideband] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectMC/tree18_Electron_DYJets.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Worst]
+  |   |-- ch.Iso @ Sel. step:     [Worst]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Sideband/IsoType_WorstWorst/]
+  |   `-- cross-section:    [6077.220215]
+  |-- Found:          [454215] events
+  |-- Selected:       [29407] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Sideband/IsoType_WorstWorst/hist18_Electron_DYJets.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.088] hours
+      `-- Total time:  [0.088] hours
+
+ [+] Start processing file #[01] for the [Sideband] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectMC/tree18_Electron_DYJets.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Worst]
+  |   |-- ch.Iso @ Sel. step:     [Correct]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Sideband/IsoType_WorstCorrect/]
+  |   `-- cross-section:    [6077.220215]
+  |-- Found:          [454215] events
+  |-- Selected:       [23081] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Sideband/IsoType_WorstCorrect/hist18_Electron_DYJets.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.077] hours
+      `-- Total time:  [0.077] hours
+
+ [+] Start processing file #[01] for the [Sideband] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectMC/tree18_Electron_DYJets.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Correct]
+  |   |-- ch.Iso @ Sel. step:     [Worst]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Sideband/IsoType_CorrectWorst/]
+  |   `-- cross-section:    [6077.220215]
+  |-- Found:          [454215] events
+  |-- Selected:       [45296] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Sideband/IsoType_CorrectWorst/hist18_Electron_DYJets.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.055] hours
+      `-- Total time:  [0.055] hours
+
+ [+] Start processing file #[01] for the [Sideband] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectMC/tree18_Electron_DYJets.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Correct]
+  |   |-- ch.Iso @ Sel. step:     [Correct]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Sideband/IsoType_CorrectCorrect/]
+  |   `-- cross-section:    [6077.220215]
+  |-- Found:          [454215] events
+  |-- Selected:       [36461] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistMCLR/Region_Sideband/IsoType_CorrectCorrect/hist18_Electron_DYJets.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.035] hours
+      `-- Total time:  [0.035] hours
+
+(int) 0

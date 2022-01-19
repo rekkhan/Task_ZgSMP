@@ -1,0 +1,138 @@
+
+Processing run_Select.C(2016,0,2,1,5,5)...
+reading List_File/listDTUL_inputSelect.txt
+
+ [---------------<< Program starts >>---------------]
+ [                                                  ]
+ [    [+] Task: Create trees of preselection        ]
+ [    [+] List of parameters:                       ]
+ [     |-- Data type:           Data                ]
+ [     |-- Lepton type:         electron            ]
+ [     |-- Year:                2016                ]
+ [     `-- Number of files:     01                  ]
+ [                                                  ]
+ [--------------------------------------------------]
+
+ Info: Main loop is starting
+ ---------------------------
+ [+] Start processing file #[05] for the [Signal] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectDT/tree16UL_Electron_RunF1.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Worst]
+  |   |-- ch.Iso @ Sel. step:     [Worst]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistDTUL/Region_Signal/IsoType_WorstWorst/]
+  |   `-- cross-section:    [1.000000]
+  |-- Found:          [126111] events
+  |-- Selected:       [1492] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistDTUL/Region_Signal/IsoType_WorstWorst/hist16UL_Electron_RunF1.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.076] hours
+      `-- Total time:  [0.076] hours
+
+ [+] Start processing file #[05] for the [Signal] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectDT/tree16UL_Electron_RunF1.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Worst]
+  |   |-- ch.Iso @ Sel. step:     [Correct]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistDTUL/Region_Signal/IsoType_WorstCorrect/]
+  |   `-- cross-section:    [1.000000]
+  |-- Found:          [126111] events
+  |-- Selected:       [2633] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistDTUL/Region_Signal/IsoType_WorstCorrect/hist16UL_Electron_RunF1.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.074] hours
+      `-- Total time:  [0.074] hours
+
+ [+] Start processing file #[05] for the [Signal] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectDT/tree16UL_Electron_RunF1.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Correct]
+  |   |-- ch.Iso @ Sel. step:     [Worst]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistDTUL/Region_Signal/IsoType_CorrectWorst/]
+  |   `-- cross-section:    [1.000000]
+  |-- Found:          [126111] events
+  |-- Selected:       [1492] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistDTUL/Region_Signal/IsoType_CorrectWorst/hist16UL_Electron_RunF1.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.067] hours
+      `-- Total time:  [0.067] hours
+
+ [+] Start processing file #[05] for the [Signal] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectDT/tree16UL_Electron_RunF1.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Correct]
+  |   |-- ch.Iso @ Sel. step:     [Correct]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistDTUL/Region_Signal/IsoType_CorrectCorrect/]
+  |   `-- cross-section:    [1.000000]
+  |-- Found:          [126111] events
+  |-- Selected:       [2911] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistDTUL/Region_Signal/IsoType_CorrectCorrect/hist16UL_Electron_RunF1.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.062] hours
+      `-- Total time:  [0.062] hours
+
+ [+] Start processing file #[05] for the [Sideband] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectDT/tree16UL_Electron_RunF1.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Worst]
+  |   |-- ch.Iso @ Sel. step:     [Worst]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistDTUL/Region_Sideband/IsoType_WorstWorst/]
+  |   `-- cross-section:    [1.000000]
+  |-- Found:          [126111] events
+  |-- Selected:       [3892] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistDTUL/Region_Sideband/IsoType_WorstWorst/hist16UL_Electron_RunF1.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.058] hours
+      `-- Total time:  [0.058] hours
+
+ [+] Start processing file #[05] for the [Sideband] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectDT/tree16UL_Electron_RunF1.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Worst]
+  |   |-- ch.Iso @ Sel. step:     [Correct]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistDTUL/Region_Sideband/IsoType_WorstCorrect/]
+  |   `-- cross-section:    [1.000000]
+  |-- Found:          [126111] events
+  |-- Selected:       [2752] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistDTUL/Region_Sideband/IsoType_WorstCorrect/hist16UL_Electron_RunF1.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.055] hours
+      `-- Total time:  [0.055] hours
+
+ [+] Start processing file #[05] for the [Sideband] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectDT/tree16UL_Electron_RunF1.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Correct]
+  |   |-- ch.Iso @ Sel. step:     [Worst]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistDTUL/Region_Sideband/IsoType_CorrectWorst/]
+  |   `-- cross-section:    [1.000000]
+  |-- Found:          [126111] events
+  |-- Selected:       [5302] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistDTUL/Region_Sideband/IsoType_CorrectWorst/hist16UL_Electron_RunF1.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.051] hours
+      `-- Total time:  [0.051] hours
+
+ [+] Start processing file #[05] for the [Sideband] region:
+  |-- Basic info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectDT/tree16UL_Electron_RunF1.root]
+  |   |-- ch.Iso @ Pre.Sel. step: [Correct]
+  |   |-- ch.Iso @ Sel. step:     [Correct]
+  |   |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/HistDTUL/Region_Sideband/IsoType_CorrectCorrect/]
+  |   `-- cross-section:    [1.000000]
+  |-- Found:          [126111] events
+  |-- Selected:       [3886] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/HistDTUL/Region_Sideband/IsoType_CorrectCorrect/hist16UL_Electron_RunF1.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.043] hours
+      `-- Total time:  [0.043] hours
+
+(int) 0
