@@ -1,0 +1,35 @@
+
+Processing run_Preselect.C(2016,0,2,2,3,3)...
+reading List_File/listDTUL_inputPreselect.txt
+reading List_File/listDTUL_outputPreselect.txt
+
+ [---------------<< Program starts >>---------------]
+ [                                                  ]
+ [    [+] Task: Create trees of preselection        ]
+ [    [+] List of parameters:                       ]
+ [     |-- Data type:           Data                ]
+ [     |-- Lepton type:         muon                ]
+ [     |-- Year:                2016                ]
+ [     `-- Number of files:     01                  ]
+ [                                                  ]
+ [--------------------------------------------------]
+
+ Info: Main loop is starting
+ ---------------------------
+ [+] Start processing file #[03] in the list:
+  |-- Input info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_SkimDT/tree16UL_Muon_RunD.root]
+  |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectDT/]
+  |   |-- Reproc version:   [2]
+  |   |-- cross-section:    [0.000000]
+  |   |-- Do use new PU:    [0]
+  |   `-- Do reject photon: [0]
+  |-- Found:          [2042732] events
+  |-- Selected:       [36139] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/Tree_PreselectDT/tree16UL_Muon_RunD.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.375] hours
+      `-- Total time:  [0.375] hours
+
+(int) 0

@@ -1,0 +1,35 @@
+
+Processing run_Preselect.C(2018,1,1,1,4,4)...
+reading List_File/listMC_inputPreselect.txt
+reading List_File/listMC_outputPreselect.txt
+
+ [---------------<< Program starts >>---------------]
+ [                                                  ]
+ [    [+] Task: Create trees of preselection        ]
+ [    [+] List of parameters:                       ]
+ [     |-- Data type:           MC                  ]
+ [     |-- Lepton type:         electron            ]
+ [     |-- Year:                2018                ]
+ [     `-- Number of files:     01                  ]
+ [                                                  ]
+ [--------------------------------------------------]
+
+ Info: Main loop is starting
+ ---------------------------
+ [+] Start processing file #[04] in the list:
+  |-- Input info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_SkimMC/tree18_Electron_WZ.root]
+  |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectMC/]
+  |   |-- Reproc version:   [1]
+  |   |-- cross-section:    [118.699997]
+  |   |-- Do use new PU:    [0]
+  |   `-- Do reject photon: [0]
+  |-- Found:          [94361] events
+  |-- Selected:       [5092] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/Tree_PreselectMC/tree18_Electron_WZ.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [0.029] hours
+      `-- Total time:  [0.029] hours
+
+(int) 0

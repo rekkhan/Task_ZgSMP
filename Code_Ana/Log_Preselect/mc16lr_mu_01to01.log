@@ -1,0 +1,35 @@
+
+Processing run_Preselect.C(2016,1,1,2,1,1)...
+reading List_File/listMC_inputPreselect.txt
+reading List_File/listMC_outputPreselect.txt
+
+ [---------------<< Program starts >>---------------]
+ [                                                  ]
+ [    [+] Task: Create trees of preselection        ]
+ [    [+] List of parameters:                       ]
+ [     |-- Data type:           MC                  ]
+ [     |-- Lepton type:         muon                ]
+ [     |-- Year:                2016                ]
+ [     `-- Number of files:     01                  ]
+ [                                                  ]
+ [--------------------------------------------------]
+
+ Info: Main loop is starting
+ ---------------------------
+ [+] Start processing file #[01] in the list:
+  |-- Input info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_SkimMC/tree16_Muon_DYJets.root]
+  |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectMC/]
+  |   |-- Reproc version:   [1]
+  |   |-- cross-section:    [6077.220215]
+  |   |-- Do use new PU:    [0]
+  |   `-- Do reject photon: [1]
+  |-- Found:          [15994117] events
+  |-- Selected:       [227861] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/Tree_PreselectMC/tree16_Muon_DYJets.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [1.870] hours
+      `-- Total time:  [1.871] hours
+
+(int) 0

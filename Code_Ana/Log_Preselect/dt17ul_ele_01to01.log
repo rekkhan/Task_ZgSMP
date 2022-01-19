@@ -1,0 +1,35 @@
+
+Processing run_Preselect.C(2017,0,2,1,1,1)...
+reading List_File/listDTUL_inputPreselect.txt
+reading List_File/listDTUL_outputPreselect.txt
+
+ [---------------<< Program starts >>---------------]
+ [                                                  ]
+ [    [+] Task: Create trees of preselection        ]
+ [    [+] List of parameters:                       ]
+ [     |-- Data type:           Data                ]
+ [     |-- Lepton type:         electron            ]
+ [     |-- Year:                2017                ]
+ [     `-- Number of files:     01                  ]
+ [                                                  ]
+ [--------------------------------------------------]
+
+ Info: Main loop is starting
+ ---------------------------
+ [+] Start processing file #[01] in the list:
+  |-- Input info:
+  |   |-- Path to file(s):  [/home/hoa/Task_ZgSMP/Output/Tree_SkimDT/tree17UL_Electron_RunB.root]
+  |-- Dir to output:  [/home/hoa/Task_ZgSMP/Output/Tree_PreselectDT/]
+  |   |-- Reproc version:   [2]
+  |   |-- cross-section:    [0.000000]
+  |   |-- Do use new PU:    [0]
+  |   `-- Do reject photon: [0]
+  |-- Found:          [7308219] events
+  |-- Selected:       [167668] events
+  |-- Save output at: [/home/hoa/Task_ZgSMP/Output/Tree_PreselectDT/tree17UL_Electron_RunB.root]
+  `-- Job's done:
+      |-- Prep time:   [0.000] hours
+      |-- Work time:   [1.814] hours
+      `-- Total time:  [1.814] hours
+
+(int) 0
