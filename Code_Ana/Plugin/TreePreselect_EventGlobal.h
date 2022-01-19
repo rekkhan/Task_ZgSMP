@@ -44,7 +44,7 @@ int  FillPreselect_EventGlobal (TreeReader &tree_input,  PUWeightCalculator &puC
 	genWeight = tree_input . GetFloat  ("genWeight");
 
 	bool passHLT;
-	passHLT  = (leptype==1) ? (HLT>>5&1 && year==2016) : ((HLT>>14&1 || HLT>>15&1) && year==2016);
+	passHLT  = (leptype==1) ? ((HLT>>5&1 || HLT>>40&1) && year==2016) : ((HLT>>14&1 || HLT>>15&1) && year==2016);
 	passHLT |= (leptype==1) ? (HLT>>40&1 && year==2017) : (HLT>>14&1 && year==2017);
 	passHLT |= (leptype==1) ? (HLT>>40&1 && year==2018) : (HLT>>15&1 && year==2018);
 

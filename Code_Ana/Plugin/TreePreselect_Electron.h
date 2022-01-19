@@ -18,6 +18,8 @@ float   *elePhi_in;
 float   *eleSCPhi_in;
 float   *eleEn_in;
 float   *eleCalibEn_in;
+float   *eleD0_in;
+float   *eleDz_in;
 
 
 // + List of output variables
@@ -32,6 +34,8 @@ vector<float>  elePhi_out;
 vector<float>  eleSCPhi_out;
 vector<float>  eleEn_out;
 vector<float>  eleCalibEn_out;
+vector<float>  eleD0_out;
+vector<float>  eleDz_out;
 vector<int>    elePass_out;
 
 
@@ -49,6 +53,8 @@ void  BranchPreselect_Electron (TTree* tree_output)
 	tree_output -> Branch ("eleSCPhi",   &eleSCPhi_out);
 	tree_output -> Branch ("eleEn",      &eleEn_out);
 	tree_output -> Branch ("eleCalibEn", &eleCalibEn_out);
+	tree_output -> Branch ("eleD0",      &eleD0_out);
+	tree_output -> Branch ("eleDz",      &eleDz_out);
 	tree_output -> Branch ("elePass",    &elePass_out);
 }
 
@@ -73,6 +79,8 @@ int  FillPreselect_Electron (TreeReader &tree_input)
 	eleSCPhi_out   . clear();
 	eleEn_out      . clear();
 	eleCalibEn_out . clear();
+	eleD0_out      . clear();
+	eleDz_out      . clear();
 	elePass_out    . clear();
 
 	nEle_in       = tree_input . GetInt      ("nEle");
@@ -88,6 +96,8 @@ int  FillPreselect_Electron (TreeReader &tree_input)
 	eleSCPhi_in   = tree_input . GetPtrFloat ("eleSCPhi");
 	eleEn_in      = tree_input . GetPtrFloat ("eleEn");
 	eleCalibEn_in = tree_input . GetPtrFloat ("eleCalibEn");
+	eleD0_in      = tree_input . GetPtrFloat ("eleD0");
+	eleDz_in      = tree_input . GetPtrFloat ("eleDz");
 
 	nEle_out    = nEle_in;
 	nEle_pass   = 0;
@@ -113,6 +123,8 @@ int  FillPreselect_Electron (TreeReader &tree_input)
 		eleSCPhi_out   . push_back (eleSCPhi_in[i]);
 		eleEn_out      . push_back (eleEn_in[i]);
 		eleCalibEn_out . push_back (eleCalibEn_in[i]);
+		eleD0_out      . push_back (eleD0_in[i]);
+		eleDz_out      . push_back (eleDz_in[i]);
 		elePass_out    . push_back (elePass);
 	}
 

@@ -18,6 +18,8 @@ float  *muPt_in;
 float  *muEta_in;
 float  *muPhi_in;
 float  *muEn_in;
+float  *muD0_in;
+float  *muDz_in;
 int    *muIDbit_in;
 int    *muTrkLayers_in;
 
@@ -31,6 +33,8 @@ vector<float>  muCorPt_out;
 vector<float>  muEta_out;
 vector<float>  muPhi_out;
 vector<float>  muEn_out;
+vector<float>  muD0_out;
+vector<float>  muDz_out;
 vector<int>    muPass_out;
 
 
@@ -45,6 +49,8 @@ void  BranchPreselect_Muon (TTree *tree_output)
 	tree_output -> Branch ("muEta",    &muEta_out);
 	tree_output -> Branch ("muPhi",    &muPhi_out);
 	tree_output -> Branch ("muEn",     &muEn_out);
+	tree_output -> Branch ("muD0",     &muD0_out);
+	tree_output -> Branch ("muDz",     &muDz_out);
 	tree_output -> Branch ("muPass",   &muPass_out);
 }
 
@@ -69,6 +75,8 @@ int  FillPreselect_Muon (TreeReader &tree_input, RoccoR &rcCore, bool isMC)
 	muEta_out    . clear();
 	muPhi_out    . clear();
 	muEn_out     . clear();
+	muD0_out     . clear();
+	muDz_out     . clear();
 	muPass_out   . clear();
 
 	nMu_in         = tree_input . GetInt      ("nMu");
@@ -79,6 +87,8 @@ int  FillPreselect_Muon (TreeReader &tree_input, RoccoR &rcCore, bool isMC)
 	muEta_in       = tree_input . GetPtrFloat ("muEta");
 	muPhi_in       = tree_input . GetPtrFloat ("muPhi");
 	muEn_in        = tree_input . GetPtrFloat ("muEn");
+	muD0_in        = tree_input . GetPtrFloat ("muD0");
+	muDz_in        = tree_input . GetPtrFloat ("muDz");
 	muIDbit_in     = tree_input . GetPtrInt   ("muIDbit");
 	muTrkLayers_in = tree_input . GetPtrInt   ("muTrkLayers");
 
@@ -110,6 +120,7 @@ int  FillPreselect_Muon (TreeReader &tree_input, RoccoR &rcCore, bool isMC)
 	for (int i=0; i<nMu_in; i++)
 	{
 		muPass  = (muIDbit_in[i]>>3) & 1;
+		muPass &= (muIDbit_in[i]>>9) & 1;
 		muPass &= abs (muEta_in[i]) < 2.4;
 
 		cal_rand  = rdGen_Roccor -> Rndm();
@@ -156,6 +167,8 @@ int  FillPreselect_Muon (TreeReader &tree_input, RoccoR &rcCore, bool isMC)
 		muEta_out    . push_back (muEta_in[i]);
 		muPhi_out    . push_back (muPhi_in[i]);
 		muEn_out     . push_back (muEn_in[i]);
+		muD0_out     . push_back (muD0_in[i]);
+		muDz_out     . push_back (muDz_in[i]);
 		muPass_out   . push_back (muPass);
 	}
 

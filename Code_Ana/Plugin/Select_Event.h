@@ -27,7 +27,7 @@ bool  SelectEvent_Skim (TreeReader &tree_input,  int year)
 //=======================
 // + Selection at the end
 //=======================
-pair<int,tuple<int,int,int,int>>  SelectEvent_Final_Squeeze (TreeReader &tree_input, int region, int leptype)
+pair<int,tuple<int,int,int,int>>  SelectEvent_Final_Squeeze (TreeReader &tree_input, int region, int leptype, int isoPre, int isoSel)
 {
 	// + List of return values
 	//------------------------
@@ -104,7 +104,9 @@ pair<int,tuple<int,int,int,int>>  SelectEvent_Final_Squeeze (TreeReader &tree_in
 		if (doAppend)   list_ilep . push_back (i);
 	}
 
-	if (nLepPass > 2)
+	// * Reject events that contain more than 2 leptons (temporarily ignored)
+	//if (nLepPass > 2)
+	if (nLepPass < 2)
 	{
 		objID = make_tuple (-1, -1, -1, -1);
 		stt_Selection = 0;
@@ -120,7 +122,8 @@ pair<int,tuple<int,int,int,int>>  SelectEvent_Final_Squeeze (TreeReader &tree_in
 	float *phoSCEta             = tree_input . GetPtrFloat ("phoSCEta");
 	float *phoPhi               = tree_input . GetPtrFloat ("phoPhi");
 	float *phoE                 = tree_input . GetPtrFloat ("phoE");
-	float *phoPFChIso           = tree_input . GetPtrFloat ("phoPFChIso");
+	float *phoPFChCorIso        = tree_input . GetPtrFloat ("phoPFChIso");
+	float *phoPFChWorstIso      = tree_input . GetPtrFloat ("phoPFChWorstIso");
 	float *phoPFPhoIso          = tree_input . GetPtrFloat ("phoPFPhoIso");
 	float *phoSCEtaWidth        = tree_input . GetPtrFloat ("phoSCEtaWidth");
 	float *phoR9                = tree_input . GetPtrFloat ("phoR9");
@@ -140,7 +143,7 @@ pair<int,tuple<int,int,int,int>>  SelectEvent_Final_Squeeze (TreeReader &tree_in
 
 		for (it=list_ipho.begin(); it<list_ipho.end(); it++)
 		{
-			if (phoCalibEt[i]<phoCalibEt[*it])
+			if (phoCalibEt[i]>phoCalibEt[*it])
 			{
 				list_ipho . insert (it,i);
 				doAppend = false;
@@ -180,7 +183,7 @@ pair<int,tuple<int,int,int,int>>  SelectEvent_Final_Squeeze (TreeReader &tree_in
 			{
 				float jetPt2 = jetPt[*it] * jetP4Smear[*it];
 
-				if (jetPt1<jetPt2)
+				if (jetPt1>jetPt2)
 				{
 					list_ijet . insert (it,i);
 					doAppend = false;
@@ -210,15 +213,14 @@ pair<int,tuple<int,int,int,int>>  SelectEvent_Final_Squeeze (TreeReader &tree_in
 	bool  passPair;
 
 	int lenLep = list_ilep.size();
-	//for (int i=0; i<(lenLep-1); i++)
-	for (int i=0; i<1; i++)
+	for (int i=0; i<(lenLep-1); i++)
 	{
 		ilep1 = list_ilep[i];
 
 		if (lepPass[ilep1]!=1  ||  lepPt[ilep1]<25)   continue;
 		v4d_lep1 . SetPtEtaPhiE (lepPt[ilep1], lepEta[ilep1], lepPhi[ilep1], lepEn[ilep1]);
 
-		for (int j=i+1; j<2; j++)
+		for (int j=i+1; j<lenLep; j++)
 		{
 			ilep2 = list_ilep[j];
 
@@ -261,21 +263,30 @@ pair<int,tuple<int,int,int,int>>  SelectEvent_Final_Squeeze (TreeReader &tree_in
 	bool isEB;
 	bool passIso;
 
+	float phoPreIso;
+	float phoSelIso;
+
 	for (int i=0; i<int(list_pair.size()); i++)
 	{
 		ilep1 = list_pair[i] . first;
 		ilep2 = list_pair[i] . second;
 
-		//for (int j=0; j<int(list_ipho.size()); j++)
-		for (int j=0; j<1; j++)
+		for (int j=0; j<int(list_ipho.size()); j++)
 		{
 			ipho = list_ipho[j];
+
+			phoPreIso  = (isoPre==0)*phoPFChWorstIso[ipho];
+			phoPreIso += (isoPre==1)*phoPFChCorIso[ipho];
+
+			phoSelIso  = (isoSel==0)*phoPFChWorstIso[ipho];
+			phoSelIso += (isoSel==1)*phoPFChCorIso[ipho];
 
 			if (phoPass[ipho] != 1)   continue;
 
 			isEB = abs(phoSCEta[ipho]) < 1.4442;
 
-			passIso = (region == 0) ? phoPFChIso[ipho]<isocut[isEB] : phoPFChIso[ipho]>isocut[isEB];
+			passIso  = (phoPreIso < 15.0);
+			passIso &= (region==0 && phoSelIso<isocut[isEB]) || (region==1 && phoSelIso>isocut[isEB]);
 			if (!passIso)   continue;
 
 			deltaR1 = compute_DeltaR (lepEta[ilep1], phoEta[ipho], lepPhi[ilep1], phoPhi[ipho]);
@@ -296,6 +307,21 @@ pair<int,tuple<int,int,int,int>>  SelectEvent_Final_Squeeze (TreeReader &tree_in
 
 		return result;
 	}
+
+
+	/*
+	printf ("       |-- Test sorting: lepton\n");
+	for (int i=0; i<list_ilep.size(); i++)
+	{
+		printf ("           |-- pT[%d]: %.3f\n", i, lepPt[list_ilep[i]]);
+	}
+
+	printf ("       |-- Test sorting: photon\n");
+	for (int i=0; i<list_ipho.size(); i++)
+	{
+		printf ("           |-- pT[%d]: %.3f\n", i, lepPt[list_ipho[i]]);
+	}
+	*/
 
 
 	// + Check the angle between the jet and other objects

@@ -139,15 +139,17 @@ int    nPho_pass;
 float  phoAbsEta;
 bool   isEB;
 
-float  corIsoPho;
-float  corIsoCh;
+float  iso_corPho;
+float  iso_corCh;
+float  iso_worstCh;
 
 float  areaEff[2][7] =
 {
 	{0.0112, 0.0108, 0.0106, 0.01002, 0.0098, 0.0089},
 	{0.1113, 0.0953, 0.0619, 0.08370, 0.1070, 0.1212}
 };
-float  eaSCEta[6] = {1.0, 1.479, 2.0, 2.2, 2.3, 2.4};
+
+//float  eaSCEta[6] = {1.0, 1.479, 2.0, 2.2, 2.3, 2.4};
 
 int  FillPreselect_Photon (TreeReader &tree_input,  bool isMC,  bool rejPho)
 {
@@ -264,7 +266,7 @@ int  FillPreselect_Photon (TreeReader &tree_input,  bool isMC,  bool rejPho)
 				if (abs(mcPID_in[j]) != 22)   continue;
 				if (((mcStatusFlag_in[j]>>0)&1)==false && ((mcStatusFlag_in[j]>>1)&1)==false)   continue;
 				cal_dR = compute_DeltaR (phoEta_in[i], mcEta_in[j], phoPhi_in[i], mcPhi_in[j]);
-				phoMatchGen = cal_dR < 0.1;
+				phoMatchGen = (cal_dR < 0.1);
 
 				if (phoMatchGen)
 				{
@@ -280,27 +282,35 @@ int  FillPreselect_Photon (TreeReader &tree_input,  bool isMC,  bool rejPho)
 			break;
 		}
 
-		int binEta = 0;
+		//int binEta = 0;
+		//while (binEta < 6)
+		//{
+			//if (abs(phoSCEta_in[i]) < eaSCEta[binEta])   break;
+			//binEta ++;
+		//}
 
-		while (binEta < 6)
-		{
-			if (abs(phoSCEta_in[i]) < eaSCEta[binEta])   break;
-			binEta ++;
-		}
+		int binEta = -1;
+		binEta += (abs(phoSCEta_in[i])<1.0) * 1;
+		binEta += (abs(phoSCEta_in[i])>=1.000 && abs(phoSCEta_in[i])<1.479) * 2;
+		binEta += (abs(phoSCEta_in[i])>=1.479 && abs(phoSCEta_in[i])<2.000) * 3;
+		binEta += (abs(phoSCEta_in[i])>=2.000 && abs(phoSCEta_in[i])<2.200) * 4;
+		binEta += (abs(phoSCEta_in[i])>=2.200 && abs(phoSCEta_in[i])<2.300) * 5;
+		binEta += (abs(phoSCEta_in[i])>=2.300 && abs(phoSCEta_in[i])<2.400) * 6;
+		binEta += (abs(phoSCEta_in[i])>=2.400) * 7;
 
-		corIsoCh  = (binEta<6) ? max (float(phoPFChIso_in[i]-rhotmp*areaEff[0][binEta]), (float)0.0) : phoPFChIso_in[i];
-		corIsoPho = (binEta<6) ? max (float(phoPFPhoIso_in[i]-rhotmp*areaEff[1][binEta]), (float)0.0) : phoPFPhoIso_in[i];
-		isEB      = (abs(phoSCEta_in[i]) < 1.4442);
+		iso_corCh   = (binEta>-1) ? max (float(phoPFChIso_in[i]-rhotmp*areaEff[0][binEta]), (float)0.0) : phoPFChIso_in[i];
+		iso_worstCh = phoPFChWorstIso_in[i];
+		iso_corPho  = (binEta>-1) ? max (float(phoPFPhoIso_in[i]-rhotmp*areaEff[1][binEta]), (float)0.0) : phoPFPhoIso_in[i];
+		isEB        = (abs(phoSCEta_in[i]) < 1.4442);
 
 		phoPass  = (phoCalibEt_in[i] > 20);
 		phoPass &= (abs(phoSCEta_in[i])<1.4442 || (abs(phoSCEta_in[i])>1.566 && abs(phoSCEta_in[i])<2.4));
 		phoPass &= (phoEleVeto_in[i] == 1);
 		phoPass &= ((isEB) ? phoHoverE_in[i]<0.08 : phoHoverE_in[i]<0.05);
 		phoPass &= ((isEB) ? phoSigmaIEtaIEtaFull_in[i]<0.015 : phoSigmaIEtaIEtaFull_in[i]<0.045);
-		phoPass &= (corIsoPho < 15.0);
-		phoPass &= (corIsoCh < 15.0);
+		phoPass &= (iso_corPho < 15.0);
 
-		nPho_pass += (phoPass) ? 1 : 0;
+		nPho_pass += (phoPass)*1;
 
 		phoEt_out                . push_back (phoEt_in[i]);
 		phoCalibEt_out           . push_back (phoCalibEt_in[i]);
@@ -309,9 +319,9 @@ int  FillPreselect_Photon (TreeReader &tree_input,  bool isMC,  bool rejPho)
 		phoPhi_out               . push_back (phoPhi_in[i]);
 		phoSCPhi_out             . push_back (phoSCPhi_in[i]);
 		phoE_out                 . push_back (phoE_in[i]);
-		phoPFChIso_out           . push_back (corIsoCh);
-		phoPFChWorstIso_out      . push_back (corIsoPho);
-		phoPFPhoIso_out          . push_back (phoPFPhoIso_in[i]);
+		phoPFChIso_out           . push_back (iso_corCh);
+		phoPFChWorstIso_out      . push_back (iso_worstCh);
+		phoPFPhoIso_out          . push_back (iso_corPho);
 		phoEleVeto_out           . push_back (phoEleVeto_in[i]);
 		phohasPixelSeed_out      . push_back (phohasPixelSeed_in[i]);
 		phoHoverE_out            . push_back (phoHoverE_in[i]);

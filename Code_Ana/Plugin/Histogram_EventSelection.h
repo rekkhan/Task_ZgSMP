@@ -82,6 +82,7 @@ TH1D *histEB_dphi_jetinv;
 
 // * Shower shape variables
 TH1D *histEE_chIso_pho;
+TH1D *histEE_chWorIso_pho;
 TH1D *histEE_sceta_pho;
 TH1D *histEE_scEn_pho;
 TH1D *histEE_r9_pho;
@@ -94,6 +95,7 @@ TH1D *histEE_esSigRR_pho;
 TH1D *histEE_ESoverSC_pho;
 
 TH1D *histEB_chIso_pho;
+TH1D *histEB_chWorIso_pho;
 TH1D *histEB_sceta_pho;
 TH1D *histEB_scEn_pho;
 TH1D *histEB_r9_pho;
@@ -105,7 +107,7 @@ TH1D *histEB_phiwidth_pho;
 
 
 
-void InitHistogram (int leptype)
+void InitHistogram (int leptype, int region)
 {
 	// + Histogram binning
 	//--------------------
@@ -159,6 +161,10 @@ void InitHistogram (int leptype)
 		105, 110, 115, 120, 130,
 		140, 155, 175, 200, 250
 	};
+
+	float binning_chiso = (region==0)*25 + (region==1)*16;
+	float binmin_chiso  = 0;
+	float binmax_chiso  = (region==0)*2.5 + (region==1)*16;
 
 
 
@@ -237,7 +243,8 @@ void InitHistogram (int leptype)
 	histEB_dphi_jetinv   = new TH1D ("histEB_dphi_jetinv",    "", 18, 0, 3.6);
 
 	// * Shower shape variables
-	histEE_chIso_pho     = new TH1D ("histEE_chIso_pho",      "", 160, 0, 16);
+	histEE_chIso_pho     = new TH1D ("histEE_chIso_pho",      "", binning_chiso, binmin_chiso, binmax_chiso);
+	histEE_chWorIso_pho  = new TH1D ("histEE_chWorIso_pho",   "", binning_chiso, binmin_chiso, binmax_chiso);
 	histEE_sceta_pho     = new TH1D ("histEE_sceta_pho",      "", 20, 0, 4.0);
 	histEE_scEn_pho      = new TH1D ("histEE_scEn_pho",       "", 20, 0, 400);
 	histEE_r9_pho        = new TH1D ("histEE_r9_pho",         "", 30, 0, 1.2);
@@ -249,7 +256,8 @@ void InitHistogram (int leptype)
 	histEE_esSigRR_pho   = new TH1D ("histEE_esSigRR_pho",    "", 15, 0, 15);
 	histEE_ESoverSC_pho  = new TH1D ("histEE_ESoverSC_pho",   "", 20, 0, 0.04);
 
-	histEB_chIso_pho     = new TH1D ("histEB_chIso_pho",      "", 160, 0, 16);
+	histEB_chIso_pho     = new TH1D ("histEB_chIso_pho",      "", binning_chiso, binmin_chiso, binmax_chiso);
+	histEB_chWorIso_pho  = new TH1D ("histEB_chWorIso_pho",   "", binning_chiso, binmin_chiso, binmax_chiso);
 	histEB_sceta_pho     = new TH1D ("histEB_sceta_pho",      "", 20, 0, 4.0);
 	histEB_scEn_pho      = new TH1D ("histEB_scEn_pho",       "", 20, 0, 400);
 	histEB_r9_pho        = new TH1D ("histEB_r9_pho",         "", 30, 0, 1.2);
@@ -337,6 +345,7 @@ void InitHistogram (int leptype)
 
 	// * Shower shape variables
 	histEE_chIso_pho     -> Sumw2();
+	histEE_chWorIso_pho  -> Sumw2();
 	histEE_sceta_pho     -> Sumw2();
 	histEE_scEn_pho      -> Sumw2();
 	histEE_r9_pho        -> Sumw2();
@@ -349,6 +358,7 @@ void InitHistogram (int leptype)
 	histEE_ESoverSC_pho  -> Sumw2();
 
 	histEB_chIso_pho     -> Sumw2();
+	histEB_chWorIso_pho  -> Sumw2();
 	histEB_sceta_pho     -> Sumw2();
 	histEB_scEn_pho      -> Sumw2();
 	histEB_r9_pho        -> Sumw2();
@@ -383,26 +393,26 @@ void InitHistogram (int leptype)
 	histEE_eta_lep2       -> GetXaxis() -> SetTitle (Form("#eta(%s_{2}) (EE)", tlep[t].data()));
 	histEE_eta_pho        -> GetXaxis() -> SetTitle (Form("#eta(#gamma) (EE)"));
 	histEE_eta_jet        -> GetXaxis() -> SetTitle (Form("#eta(j) (EE)"));
-	histEE_eta_inv        -> GetXaxis() -> SetTitle (Form("#eta(#slash{E_T}) (EE)"));
+	histEE_eta_inv        -> GetXaxis() -> SetTitle (Form("#eta(#slash{E_{T}}) (EE)"));
 
 	histEB_eta_lep1       -> GetXaxis() -> SetTitle (Form("#eta(%s_{1}) (EB)", tlep[t].data()));
 	histEB_eta_lep2       -> GetXaxis() -> SetTitle (Form("#eta(%s_{2}) (EB)", tlep[t].data()));
 	histEB_eta_pho        -> GetXaxis() -> SetTitle (Form("#eta(#gamma) (EB)"));
 	histEB_eta_jet        -> GetXaxis() -> SetTitle (Form("#eta(j) (EB)"));
-	histEB_eta_inv        -> GetXaxis() -> SetTitle (Form("#eta(#slash{E_T}f) (EB)"));
+	histEB_eta_inv        -> GetXaxis() -> SetTitle (Form("#eta(#slash{E_{T}}f) (EB)"));
 
 	// * Azimuthal angle
 	histEE_phi_lep1       -> GetXaxis() -> SetTitle (Form("#phi(%s_{1}) [rad] (EE)", tlep[t].data()));
 	histEE_phi_lep2       -> GetXaxis() -> SetTitle (Form("#phi(%s_{2}) [rad] (EE)", tlep[t].data()));
 	histEE_phi_pho        -> GetXaxis() -> SetTitle (Form("#phi(#gamma) [rad] (EE)"));
 	histEE_phi_jet        -> GetXaxis() -> SetTitle (Form("#phi(j) [rad] (EE)"));
-	histEE_phi_inv        -> GetXaxis() -> SetTitle (Form("#phi(#slash{E_T}) [rad] (EE)"));
+	histEE_phi_inv        -> GetXaxis() -> SetTitle (Form("#phi(#slash{E_{T}}) [rad] (EE)"));
 
 	histEB_phi_lep1       -> GetXaxis() -> SetTitle (Form("#phi(%s_{1}) [rad] (EB)", tlep[t].data()));
 	histEB_phi_lep2       -> GetXaxis() -> SetTitle (Form("#phi(%s_{2}) [rad] (EB)", tlep[t].data()));
 	histEB_phi_pho        -> GetXaxis() -> SetTitle (Form("#phi(#gamma) [rad] (EB)"));
 	histEB_phi_jet        -> GetXaxis() -> SetTitle (Form("#phi(j) [rad] (EB)"));
-	histEB_phi_inv        -> GetXaxis() -> SetTitle (Form("#phi(#slash{E_T}) [rad] (EB)"));
+	histEB_phi_inv        -> GetXaxis() -> SetTitle (Form("#phi(#slash{E_{T}}) [rad] (EB)"));
 
 	// * Mass
 	histEE_mass_2body     -> GetXaxis() -> SetTitle (Form("mass(%s%s) [GeV] (EE)", tlep[t].data(), tlep[t].data()));
@@ -427,36 +437,38 @@ void InitHistogram (int leptype)
 	histEB_dr_phojet      -> GetXaxis() -> SetTitle (Form("#DeltaR(#gamma,j) (EB)"));
 
 	// * Angular separation
-	histEE_dphi_lep1inv   -> GetXaxis() -> SetTitle (Form("#Delta#phi(%s_{1},#slash{E_T}) [rad] (EE)", tlep[t].data()));
-	histEE_dphi_lep2inv   -> GetXaxis() -> SetTitle (Form("#Delta#phi(%s_{2},#slash{E_T}) [rad] (EE)", tlep[t].data()));
-	histEE_dphi_phoinv    -> GetXaxis() -> SetTitle (Form("#Delta#phi(#gamma,#slash{E_T}) [rad] (EE)"));
-	histEE_dphi_jetinv    -> GetXaxis() -> SetTitle (Form("#Delta#phi(j,#slash{E_T}) [rad] (EE)"));
+	histEE_dphi_lep1inv   -> GetXaxis() -> SetTitle (Form("#Delta#phi(%s_{1},#slash{E_{T}}) [rad] (EE)", tlep[t].data()));
+	histEE_dphi_lep2inv   -> GetXaxis() -> SetTitle (Form("#Delta#phi(%s_{2},#slash{E_{T}}) [rad] (EE)", tlep[t].data()));
+	histEE_dphi_phoinv    -> GetXaxis() -> SetTitle (Form("#Delta#phi(#gamma,#slash{E_{T}}) [rad] (EE)"));
+	histEE_dphi_jetinv    -> GetXaxis() -> SetTitle (Form("#Delta#phi(j,#slash{E_{T}}) [rad] (EE)"));
 
-	histEB_dphi_lep1inv   -> GetXaxis() -> SetTitle (Form("#Delta#phi(%s_{1},#slash{E_T}) [rad] (EB)", tlep[t].data()));
-	histEB_dphi_lep2inv   -> GetXaxis() -> SetTitle (Form("#Delta#phi(%s_{2},#slash{E_T}) [rad] (EB)", tlep[t].data()));
-	histEB_dphi_phoinv    -> GetXaxis() -> SetTitle (Form("#Delta#phi(#gamma,#slash{E_T}) [rad] (EB)"));
-	histEB_dphi_jetinv    -> GetXaxis() -> SetTitle (Form("#Delta#phi(j,#slash{E_T}) [rad] (EB)"));
+	histEB_dphi_lep1inv   -> GetXaxis() -> SetTitle (Form("#Delta#phi(%s_{1},#slash{E_{T}}) [rad] (EB)", tlep[t].data()));
+	histEB_dphi_lep2inv   -> GetXaxis() -> SetTitle (Form("#Delta#phi(%s_{2},#slash{E_{T}}) [rad] (EB)", tlep[t].data()));
+	histEB_dphi_phoinv    -> GetXaxis() -> SetTitle (Form("#Delta#phi(#gamma,#slash{E_{T}}) [rad] (EB)"));
+	histEB_dphi_jetinv    -> GetXaxis() -> SetTitle (Form("#Delta#phi(j,#slash{E_{T}}) [rad] (EB)"));
 
 	// * Shower shape variables
-	histEE_sceta_pho      -> GetXaxis() -> SetTitle (Form("Ch.Iso(#gamma) [GeV] (EE)"));
+	histEE_chIso_pho      -> GetXaxis() -> SetTitle (Form("Ch.Iso(#gamma) [GeV] (EE)"));
+	histEE_chWorIso_pho   -> GetXaxis() -> SetTitle (Form("Worst Ch.Iso(#gamma) [GeV] (EE)"));
 	histEE_sceta_pho      -> GetXaxis() -> SetTitle (Form("#eta_{SC}(#gamma) (EE)"));
-	histEE_scEn_pho       -> GetXaxis() -> SetTitle (Form("#E^{raw}_{SC}(#gamma) [GeV] (EE)"));
+	histEE_scEn_pho       -> GetXaxis() -> SetTitle (Form("E^{raw}_{SC}(#gamma) [GeV] (EE)"));
 	histEE_r9_pho         -> GetXaxis() -> SetTitle (Form("R9(#gamma) [GeV] (EE)"));
 	histEE_sigetaeta_pho  -> GetXaxis() -> SetTitle (Form("#sigma_{#eta#eta}(#gamma) (EE)"));
 	histEE_sigetaphi_pho  -> GetXaxis() -> SetTitle (Form("#sigma_{#eta#phi}(#gamma) (EE)"));
-	histEE_s4_pho         -> GetXaxis() -> SetTitle (Form("E_{2#times2}/E_{5#times5}}(#gamma) (EE)"));
+	histEE_s4_pho         -> GetXaxis() -> SetTitle (Form("E_{2#times2}/E_{5#times5}(#gamma) (EE)"));
 	histEE_etawidth_pho   -> GetXaxis() -> SetTitle (Form("#delta^{SC}_{#eta}(#gamma) (EE)"));
 	histEE_phiwidth_pho   -> GetXaxis() -> SetTitle (Form("#delta^{SC}_{#phi}(#gamma) (EE)"));
 	histEE_esSigRR_pho    -> GetXaxis() -> SetTitle (Form("E_{ES}(#gamma) [GeV] (EE)"));
 	histEE_ESoverSC_pho   -> GetXaxis() -> SetTitle (Form("E_{ES}/E^{raw}_{SC} (EE)"));
 
-	histEB_sceta_pho      -> GetXaxis() -> SetTitle (Form("Ch.Iso(#gamma) [GeV] (EB)"));
+	histEB_chIso_pho      -> GetXaxis() -> SetTitle (Form("Ch.Iso(#gamma) [GeV] (EB)"));
+	histEB_chWorIso_pho   -> GetXaxis() -> SetTitle (Form("Worst Ch.Iso(#gamma) [GeV] (EB)"));
 	histEB_sceta_pho      -> GetXaxis() -> SetTitle (Form("#eta_{SC}(#gamma) (EB)"));
-	histEB_scEn_pho       -> GetXaxis() -> SetTitle (Form("#E^{raw}_{SC}(#gamma) [GeV] (EB)"));
+	histEB_scEn_pho       -> GetXaxis() -> SetTitle (Form("E^{raw}_{SC}(#gamma) [GeV] (EB)"));
 	histEB_r9_pho         -> GetXaxis() -> SetTitle (Form("R9(#gamma) [GeV] (EB)"));
 	histEB_sigetaeta_pho  -> GetXaxis() -> SetTitle (Form("#sigma_{#eta#eta}(#gamma) (EB)"));
 	histEB_sigetaphi_pho  -> GetXaxis() -> SetTitle (Form("#sigma_{#eta#phi}(#gamma) (EB)"));
-	histEB_s4_pho         -> GetXaxis() -> SetTitle (Form("E_{2#times2}/E_{5#times5}}(#gamma) (EB)"));
+	histEB_s4_pho         -> GetXaxis() -> SetTitle (Form("E_{2#times2}/E_{5#times5}(#gamma) (EB)"));
 	histEB_etawidth_pho   -> GetXaxis() -> SetTitle (Form("#delta^{SC}_{#eta}(#gamma) (EB)"));
 	histEB_phiwidth_pho   -> GetXaxis() -> SetTitle (Form("#delta^{SC}_{#phi}(#gamma) (EB)"));
 }
@@ -505,6 +517,7 @@ int FillHistogram (TreeReader &tree_input, int leptype, tuple<int,int,int,int> o
 	float *phoPhi               = tree_input . GetPtrFloat ("phoPhi");
 	float *phoE                 = tree_input . GetPtrFloat ("phoE");
 	float *phoPFChIso           = tree_input . GetPtrFloat ("phoPFChIso");
+	float *phoPFChWorstIso      = tree_input . GetPtrFloat ("phoPFChWorstIso");
 	float *phoPFPhoIso          = tree_input . GetPtrFloat ("phoPFPhoIso");
 	float *phoSCEta             = tree_input . GetPtrFloat ("phoSCEta");
 	float *phoSCRawE            = tree_input . GetPtrFloat ("phoSCRawE");
@@ -574,16 +587,19 @@ int FillHistogram (TreeReader &tree_input, int leptype, tuple<int,int,int,int> o
 	float dphijetinv  = compute_DeltaPhi (phiJet,  phiInv);
 
 	float chIso      = phoPFChIso[ipho];
+	float chWorIso   = phoPFChWorstIso[ipho];
 	float scEta      = phoSCEta[ipho];
 	float scRawEn    = phoSCRawE[ipho];
 	float r9         = phoR9[ipho];
 	float sigetaeta  = phoSigmaIEtaIEtaFull[ipho];
 	float sigetaphi  = phoSigmaIEtaIPhiFull[ipho];
-	float s4         = phoE2x2Full[ipho] * phoE5x5Full[ipho];
+	float s4         = (phoE5x5Full[ipho]!=0) ? phoE2x2Full[ipho] / phoE5x5Full[ipho] : 0;
 	float wEta       = phoSCEtaWidth[ipho];
 	float wPhi       = phoSCPhiWidth[ipho];
 	float esSigRR    = phoESEffSigmaRR[ipho];
 	float enESoverSC = (phoESEnP1[ipho]+phoESEnP2[ipho]) / phoSCRawE[ipho];
+
+	//printf ("  the value of s4 is: %.5f / %.5f = %.5f\n", phoE2x2Full[ipho], phoE5x5Full[ipho], s4);
 
 	float enLep1 = lepEn[ilep1];
 	float enLep2 = lepEn[ilep2];
@@ -639,6 +655,7 @@ int FillHistogram (TreeReader &tree_input, int leptype, tuple<int,int,int,int> o
 
 		// * Shower shape variables
 		histEE_chIso_pho     -> Fill (chIso,       scale*puwei*genwei);
+		histEE_chWorIso_pho  -> Fill (chWorIso,    scale*puwei*genwei);
 		histEE_sceta_pho     -> Fill (scEta,       scale*puwei*genwei);
 		histEE_scEn_pho      -> Fill (scRawEn,     scale*puwei*genwei);
 		histEE_r9_pho        -> Fill (r9,          scale*puwei*genwei);
@@ -694,6 +711,7 @@ int FillHistogram (TreeReader &tree_input, int leptype, tuple<int,int,int,int> o
 
 	// * Shower shape variables
 	histEB_chIso_pho     -> Fill (chIso,       scale*puwei*genwei);
+	histEB_chWorIso_pho  -> Fill (chWorIso,    scale*puwei*genwei);
 	histEB_sceta_pho     -> Fill (scEta,       scale*puwei*genwei);
 	histEB_scEn_pho      -> Fill (scRawEn,     scale*puwei*genwei);
 	histEB_r9_pho        -> Fill (r9,          scale*puwei*genwei);
@@ -783,6 +801,7 @@ void  WriteHistogram ()
 
 	// * Shower shape variables
 	histEE_chIso_pho     -> Write();
+	histEE_chWorIso_pho  -> Write();
 	histEE_sceta_pho     -> Write();
 	histEE_scEn_pho      -> Write();
 	histEE_r9_pho        -> Write();
@@ -795,6 +814,7 @@ void  WriteHistogram ()
 	histEE_ESoverSC_pho  -> Write();
 
 	histEB_chIso_pho     -> Write();
+	histEB_chWorIso_pho  -> Write();
 	histEB_sceta_pho     -> Write();
 	histEB_scEn_pho      -> Write();
 	histEB_r9_pho        -> Write();
@@ -882,6 +902,7 @@ void CleanHistogram ()
 
 	// * Shower shape variables
 	delete  histEE_chIso_pho;
+	delete  histEE_chWorIso_pho;
 	delete  histEE_sceta_pho;
 	delete  histEE_scEn_pho;
 	delete  histEE_r9_pho;
@@ -894,6 +915,7 @@ void CleanHistogram ()
 	delete  histEE_ESoverSC_pho;
 
 	delete  histEB_chIso_pho;
+	delete  histEB_chWorIso_pho;
 	delete  histEB_sceta_pho;
 	delete  histEB_scEn_pho;
 	delete  histEB_r9_pho;

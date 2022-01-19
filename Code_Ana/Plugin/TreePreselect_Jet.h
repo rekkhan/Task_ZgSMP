@@ -61,9 +61,16 @@ void BranchPreselect_Jet (TTree *tree_output)
 
 // + Fill output
 //--------------
-bool passJetID;
 bool jetPass;
-bool passChEMFrac;
+bool jettightID;
+
+bool jettightTmp;
+bool jettight16UL;
+bool jettight17UL;
+bool jettight18UL;
+bool jettight16LR;
+bool jettight17LR;
+bool jettight18LR;
 
 int  FillPreselect_Jet (TreeReader &tree_input,  int year,  int reproc)
 {
@@ -107,19 +114,228 @@ int  FillPreselect_Jet (TreeReader &tree_input,  int year,  int reproc)
 
 	for (int i=0; i<nJet_out; i++)
 	{
-		passChEMFrac  = (reproc==1 && year==2016 && jetChEMFrac_in[i] < 0.90);
-		passChEMFrac |= (jetChEMFrac_in[i] < 0.80);
+		// + JetID 2016 UL
+		//----------------
+		jettight16UL  = false;
 
-		jetPass  = (jetNeuHFrac_in[i] < 0.90);
-		jetPass &= (jetNeuEMFrac_in[i] < 0.90);
-		jetPass &= ((jetNCharged_in[i] + jetNNeutral_in[i]) > 1);
-		jetPass &= (jetMuonFrac_in[i] < 0.80);
-		jetPass &= (jetChHFrac_in[i] > 0);
-		jetPass &= (jetNCharged_in[i] > 0);
-		jetPass &= passChEMFrac;
+		// * 0 < eta < 2.4
+		jettightTmp  = (abs(jetEta_in[i]) <= 2.4);
+		jettightTmp &= (jetNeuHFrac_in[i] < 0.90);
+		jettightTmp &= (jetNeuEMFrac_in[i] < 0.90);
+		jettightTmp &= ((jetNCharged_in[i] + jetNNeutral_in[i]) > 1);
+		jettightTmp &= (jetMuonFrac_in[i] < 0.80);
+		jettightTmp &= (jetChHFrac_in[i] > 0);
+		jettightTmp &= (jetNCharged_in[i] > 0);
+		jettightTmp &= jetChEMFrac_in[i] < 0.80;
+		jettight16UL |= jettightTmp;
 
-		jetPass &= (abs(jetEta_in[i]) < 2.4);
+		// * 2.4 < eta < 2.7
+		jettightTmp  = (abs(jetEta_in[i])>2.4 && abs(jetEta_in[i])<=2.7);
+		jettightTmp &= (jetNeuHFrac_in[i] < 0.90);
+		jettightTmp &= (jetNeuEMFrac_in[i] < 0.99);
+		jettight16UL |= jettightTmp;
+
+		// * 2.7 < eta < 3.0
+		jettightTmp  = (abs(jetEta_in[i])>2.7 && abs(jetEta_in[i])<=3.0);
+		jettightTmp &= (jetNeuHFrac_in[i] < 0.90);
+		jettightTmp &= (jetNeuEMFrac_in[i]>0.00 && jetNeuEMFrac_in[i]<0.99);
+		jettightTmp &= (jetNNeutral_in[i] > 1);
+		jettight16UL |= jettightTmp;
+
+		// * 3.0 < eta < 5.0
+		jettightTmp  = (abs(jetEta_in[i])>3.0 && abs(jetEta_in[i])<=5.0);
+		jettightTmp &= (jetNeuHFrac_in[i] > 0.2);
+		jettightTmp &= (jetNeuEMFrac_in[i] < 0.90);
+		jettightTmp &= (jetNNeutral_in[i] > 10);
+		jettight16UL |= jettightTmp;
+
+		jettight16UL &= (reproc==2 && year==2016);
+
+
+		// + JetID 2017 UL
+		//----------------
+		jettight17UL = false;
+
+		// * 0 < eta < 2.4
+		jettightTmp  = (abs(jetEta_in[i]) <= 2.6);
+		jettightTmp &= (jetNeuHFrac_in[i] < 0.90);
+		jettightTmp &= (jetNeuEMFrac_in[i] < 0.90);
+		jettightTmp &= ((jetNCharged_in[i] + jetNNeutral_in[i]) > 1);
+		jettightTmp &= (jetMuonFrac_in[i] < 0.80);
+		jettightTmp &= (jetChHFrac_in[i] > 0);
+		jettightTmp &= (jetNCharged_in[i] > 0);
+		jettightTmp &= jetChEMFrac_in[i] < 0.80;
+		jettight17UL |= jettightTmp;
+
+		// * 2.4 < eta < 2.7
+		jettightTmp  = (abs(jetEta_in[i])>2.6 && abs(jetEta_in[i])<=2.7);
+		jettightTmp &= (jetNeuHFrac_in[i] < 0.90);
+		jettightTmp &= (jetNeuEMFrac_in[i] < 0.99);
+		jettightTmp &= (jetMuonFrac_in[i] < 0.80);
+		jettightTmp &= (jetNCharged_in[i] > 0);
+		jettightTmp &= jetChEMFrac_in[i] < 0.80;
+		jettight17UL |= jettightTmp;
+
+		// * 2.7 < eta < 3.0
+		jettightTmp  = (abs(jetEta_in[i])>2.7 && abs(jetEta_in[i])<=3.0);
+		jettightTmp &= (jetNeuEMFrac_in[i]>0.01 && jetNeuEMFrac_in[i]<0.99);
+		jettightTmp &= (jetNNeutral_in[i] > 1);
+		jettight17UL |= jettightTmp;
+
+		// * 3.0 < eta < 5.0
+		jettightTmp  = (abs(jetEta_in[i])>3.0 && abs(jetEta_in[i])<=5.0);
+		jettightTmp &= (jetNeuHFrac_in[i] > 0.2);
+		jettightTmp &= (jetNeuEMFrac_in[i] < 0.90);
+		jettightTmp &= (jetNNeutral_in[i] > 10);
+		jettight17UL |= jettightTmp;
+
+		jettight17UL &= (reproc==2 && year==2017);
+
+
+		// + JetID 2018 UL
+		//----------------
+		jettight18UL = false;
+
+		// * 2018UL is just a copy of 2017UL
+		jettight18UL &= jettight17UL;
+
+		jettight18UL &= (reproc==2 && year==2018);
+
+
+		// + JetID 2016 LR
+		//----------------
+		jettight16LR  = false;
+
+		// * 0 < eta < 2.4
+		jettightTmp  = (abs(jetEta_in[i]) <= 2.4);
+		jettightTmp &= (jetNeuHFrac_in[i] < 0.90);
+		jettightTmp &= (jetNeuEMFrac_in[i] < 0.90);
+		jettightTmp &= ((jetNCharged_in[i] + jetNNeutral_in[i]) > 1);
+		jettightTmp &= (jetMuonFrac_in[i] < 0.80);
+		jettightTmp &= (jetChHFrac_in[i] > 0);
+		jettightTmp &= (jetNCharged_in[i] > 0);
+		jettightTmp &= jetChEMFrac_in[i] < 0.90;
+		jettight16LR |= jettightTmp;
+
+		// * 2.4 < eta < 2.7
+		jettightTmp  = (abs(jetEta_in[i])>2.4 && abs(jetEta_in[i])<=2.7);
+		jettightTmp &= (jetNeuHFrac_in[i] < 0.90);
+		jettightTmp &= (jetNeuEMFrac_in[i] < 0.90);
+		jettightTmp &= ((jetNCharged_in[i] + jetNNeutral_in[i]) > 1);
+		jettightTmp &= (jetMuonFrac_in[i] < 0.80);
+		jettight16LR |= jettightTmp;
+
+		// * 2.7 < eta < 3.0
+		jettightTmp  = (abs(jetEta_in[i])>2.7 && abs(jetEta_in[i])<=3.0);
+		jettightTmp &= (jetNeuHFrac_in[i] < 0.98);
+		jettightTmp &= (jetNeuEMFrac_in[i] > 0.01);
+		jettightTmp &= (jetNNeutral_in[i] > 2);
+		jettight16LR |= jettightTmp;
+
+		// * 3.0 < eta
+		jettightTmp  = (abs(jetEta_in[i])>3.0);
+		jettightTmp &= (jetNeuEMFrac_in[i] < 0.90);
+		jettightTmp &= (jetNNeutral_in[i] > 10);
+		jettight16LR |= jettightTmp;
+
+		jettight16LR &= (reproc==1 && year==2016);
+
+
+		// + JetID 2017 LR
+		//----------------
+		jettight17LR = false;
+
+		// * 0 < eta < 2.4
+		jettightTmp  = (abs(jetEta_in[i]) <= 2.4);
+		jettightTmp &= (jetNeuHFrac_in[i] < 0.90);
+		jettightTmp &= (jetNeuEMFrac_in[i] < 0.90);
+		jettightTmp &= ((jetNCharged_in[i] + jetNNeutral_in[i]) > 1);
+		jettightTmp &= (jetMuonFrac_in[i] < 0.80);
+		jettightTmp &= (jetChHFrac_in[i] > 0);
+		jettightTmp &= (jetNCharged_in[i] > 0);
+		jettightTmp &= jetChEMFrac_in[i] < 0.80;
+		jettight17LR |= jettightTmp;
+
+		// * 2.4 < eta < 2.7
+		jettightTmp  = (abs(jetEta_in[i])>2.4 && abs(jetEta_in[i])<=2.7);
+		jettightTmp &= (jetNeuHFrac_in[i] < 0.90);
+		jettightTmp &= (jetNeuEMFrac_in[i] < 0.90);
+		jettightTmp &= ((jetNCharged_in[i] + jetNNeutral_in[i]) > 1);
+		jettightTmp &= (jetMuonFrac_in[i] < 0.80);
+		jettight17LR |= jettightTmp;
+
+		// * 2.7 < eta < 3.0
+		jettightTmp  = (abs(jetEta_in[i])>2.7 && abs(jetEta_in[i])<=3.0);
+		jettightTmp &= (jetNeuEMFrac_in[i] > 0.02) && (jetNeuEMFrac_in[i] < 0.99);
+		jettightTmp &= (jetNNeutral_in[i] > 2);
+		jettight17LR |= jettightTmp;
+
+		// * 3.0 < eta
+		jettightTmp  = (abs(jetEta_in[i])>3.0);
+		jettightTmp &= (jetNeuHFrac_in[i] > 0.02);
+		jettightTmp &= (jetNeuEMFrac_in[i] < 0.90);
+		jettightTmp &= (jetNNeutral_in[i] > 10);
+		jettight17LR |= jettightTmp;
+
+		jettight17LR &= (reproc==1 && year==2017);
+
+
+		// + JetID 2018 LR
+		//----------------
+		jettight18LR = false;
+
+		// * 0 < eta < 2.4
+		jettightTmp  = (abs(jetEta_in[i]) <= 2.6);
+		jettightTmp &= (jetNeuHFrac_in[i] < 0.90);
+		jettightTmp &= (jetNeuEMFrac_in[i] < 0.90);
+		jettightTmp &= ((jetNCharged_in[i] + jetNNeutral_in[i]) > 1);
+		jettightTmp &= (jetMuonFrac_in[i] < 0.80);
+		jettightTmp &= (jetChHFrac_in[i] > 0);
+		jettightTmp &= (jetNCharged_in[i] > 0);
+		jettightTmp &= jetChEMFrac_in[i] < 0.80;
+		jettight18LR |= jettightTmp;
+
+		// * 2.4 < eta < 2.7
+		jettightTmp  = (abs(jetEta_in[i])>2.6 && abs(jetEta_in[i])<=2.7);
+		jettightTmp &= (jetNeuHFrac_in[i] < 0.90);
+		jettightTmp &= (jetNeuEMFrac_in[i] < 0.99);
+		jettightTmp &= (jetMuonFrac_in[i] < 0.80);
+		jettightTmp &= (jetNCharged_in[i] > 0);
+		jettightTmp &= jetChEMFrac_in[i] < 0.80;
+		jettight18LR |= jettightTmp;
+
+		// * 2.7 < eta < 3.0
+		jettightTmp  = (abs(jetEta_in[i])>2.7 && abs(jetEta_in[i])<=3.0);
+		jettightTmp &= (jetNeuEMFrac_in[i]>0.02 && jetNeuEMFrac_in[i]<0.99);
+		jettightTmp &= (jetNNeutral_in[i] > 2);
+		jettight18LR |= jettightTmp;
+
+		// * 3.0 < eta < 5.0
+		jettightTmp  = (abs(jetEta_in[i])>3.0 && abs(jetEta_in[i])<=5.0);
+		jettightTmp &= (jetNeuHFrac_in[i] > 0.2);
+		jettightTmp &= (jetNeuEMFrac_in[i] < 0.90);
+		jettightTmp &= (jetNNeutral_in[i] > 10);
+		jettight18LR |= jettightTmp;
+
+		jettight18LR &= (reproc==1 && year==2018);
+
+
+		// + Jet passing tight ID
+		//-----------------------
+		jettightID  = false;
+		jettightID |= jettight16LR;
+		jettightID |= jettight17LR;
+		jettightID |= jettight18LR;
+		jettightID |= jettight16UL;
+		jettightID |= jettight17UL;
+		jettightID |= jettight18UL;
+
+
+		// + Pass condition for jets
+		//--------------------------
+		jetPass  = jettightID;
 		jetPass &= (jetPt_in[i] > 30);
+		jetPass &= (jetEta_in[i] > 2.4);
 
 		jetPt_out        . push_back (jetPt_in[i]);
 		jetRawPt_out     . push_back (jetRawPt_in[i]);
