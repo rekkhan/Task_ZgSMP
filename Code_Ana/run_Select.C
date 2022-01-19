@@ -8,7 +8,7 @@
 #include "CodeAna_Select.C"
 
 
-int  run_Select (bool isMC=0,  int reproc=1,  int year=2016,  int leptype=1,  int file1=1,  int file2=1)
+int  run_Select (int year=2016, bool isMC=0, int reproc=1, int leptype=1, int file1=1, int file2=1)
 {
 	// + Create the list
 	//------------------
@@ -100,19 +100,25 @@ int  run_Select (bool isMC=0,  int reproc=1,  int year=2016,  int leptype=1,  in
 	{
 		for (int reg=0; reg<2; reg++)
 		{
-			if (i > nFile-1)
+			for (int isoPre=0; isoPre<2; isoPre++)
 			{
-				printf (" [!] Warning:\n");
-				printf ("  |-- Index [%d] is out of range ([1,%d])\n", i+1, nFile);
-				printf ("  `-- Exiting loop\n\n");
-				break;
+				for (int isoSel=0; isoSel<2; isoSel++)
+				{
+					if (i > nFile-1)
+					{
+						printf (" [!] Warning:\n");
+						printf ("  |-- Index [%d] is out of range ([1,%d])\n", i+1, nFile);
+						printf ("  `-- Exiting loop\n\n");
+						break;
+					}
+
+					string path_input  = list_infoInput[leptype-1][year-2016][i].path;
+					printf (" [+] Start processing file #[%02d] for the [%s] region:\n", i+1, nameRegion[reg].data());
+
+					int status = CodeAna_Select (year, isMC, reproc, leptype, path_input, reg, isoPre, isoSel);
+					printf ("\n");
+				}
 			}
-
-			string path_input  = list_infoInput[leptype-1][year-2016][i].path;
-			printf (" [+] Start processing file #[%02d] for the [%s] region:\n", i+1, nameRegion[reg].data());
-
-			int status = CodeAna_Select (isMC, year, reproc, leptype, path_input, reg);
-			printf ("\n");
 		}
 	}
 

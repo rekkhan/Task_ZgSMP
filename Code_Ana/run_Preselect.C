@@ -8,7 +8,7 @@
 #include "CodeAna_Preselect.C"
 
 
-int  run_Preselect (bool isMC=0,  int reproc=1,  int year=2016,  int leptype=1,  int file1=1,  int file2=1)
+int  run_Preselect (int year=2016, bool isMC=0, int reproc=1, int leptype=1, int file1=1, int file2=1)
 {
 	// + Create the list
 	//------------------
@@ -158,7 +158,7 @@ int  run_Preselect (bool isMC=0,  int reproc=1,  int year=2016,  int leptype=1, 
 
 		printf (" [+] Start processing file #[%02d] in the list:\n", i+1);
 
-		int status = CodeAna_Preselect (isMC, leptype, year, path_input, path_output);
+		int status = CodeAna_Preselect (year, isMC, leptype, path_input, path_output);
 		printf ("\n");
 	}
 

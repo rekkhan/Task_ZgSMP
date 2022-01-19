@@ -15,7 +15,7 @@ using namespace std;
 
 // + Main function
 //----------------
-int CodeAna_Select (bool isMC, int year, int reproc, int leptype, string path_input, int region)
+int CodeAna_Select (int year, bool isMC, int reproc, int leptype, string path_input, int region, int isoPre, int isoSel)
 {
 	// + Timing at job start
 	//----------------------
@@ -24,7 +24,7 @@ int CodeAna_Select (bool isMC, int year, int reproc, int leptype, string path_in
 
 	// + Get list of input file
 	//-------------------------
-	printf ("  |-- Input info:\n");
+	printf ("  |-- Basic info:\n");
 	printf ("  |   |-- Path to file(s):  [%s]\n", path_input.data());
 
 
@@ -37,12 +37,13 @@ int CodeAna_Select (bool isMC, int year, int reproc, int leptype, string path_in
 		"Region_Sideband"
 	};
 
-	// * Create the directory
+	// * Initialize the directory
 	string dir_output = path_input;
 
 	int len_dirOutput = dir_output . length();
 	int len_erase     = 0;
 
+	// * Rename the 'Tree_Preselect...' to 'Hist_...'
 	int countslash = 0;
 	for (int i=len_dirOutput-1; i>-1; i--)
 	{
@@ -61,10 +62,22 @@ int CodeAna_Select (bool isMC, int year, int reproc, int leptype, string path_in
 	dir_output += subdir_region[region];
 	dir_output += "/";
 
+	// * Subdir for photon ch.Iso type
+	string subdir_isoPre = (isoPre==0) ? "Worst" : "Correct";
+	string subdir_isoSel = (isoSel==0) ? "Worst" : "Correct";
+	printf ("  |   |-- ch.Iso @ Pre.Sel. step: [%s]\n", subdir_isoPre.data());
+	printf ("  |   |-- ch.Iso @ Sel. step:     [%s]\n", subdir_isoSel.data());
+
+	dir_output += "IsoType_";
+	dir_output += subdir_isoPre;
+	dir_output += subdir_isoSel;
+	dir_output += "/";
+
+	// * Create the directory
 	string  cmd_mkdirOutput = "mkdir -p  ";
 	cmd_mkdirOutput += dir_output;
 	system (cmd_mkdirOutput.data());
-	printf ("  |-- Dir to output:  [%s]\n", dir_output.data());
+	printf ("  |   |-- Dir to output:  [%s]\n", dir_output.data());
 
 	// * Path to the output file
 	string path_output = dir_output;
@@ -160,7 +173,7 @@ int CodeAna_Select (bool isMC, int year, int reproc, int leptype, string path_in
 	tree_output -> Branch ("crossSection",        &crossSection);
 
 	// * Initialize the histogram
-	InitHistogram (leptype);
+	InitHistogram (leptype, region);
 
 
 	// + Timing at loop start
@@ -182,12 +195,12 @@ int CodeAna_Select (bool isMC, int year, int reproc, int leptype, string path_in
 	float  puWeight;
 	int    dummy;
 
-	for (int ev=0; ev<nEntry; ev++)
+	for (long ev=0; ev<nEntry; ev++)
 	{
 		tree_input2 . GetEntry (ev);
 
 		// * Select the events
-		selector = SelectEvent_Final_Squeeze (tree_input2, region, leptype);
+		selector = SelectEvent_Final_Squeeze (tree_input2, region, leptype, isoPre, isoSel);
 		stt_selection = selector . first;
 		objectID      = selector . second;
 
@@ -239,7 +252,7 @@ int CodeAna_Select (bool isMC, int year, int reproc, int leptype, string path_in
 	printf ("      |-- Work time:   [%.3f] hours\n", dt_work);
 	printf ("      `-- Total time:  [%.3f] hours\n", dt_total);
 
-	return 0;
+	return 1;
 }
 
 

@@ -26,7 +26,7 @@ using namespace std;
 
 // + Main function
 //================
-int CodeAna_Preselect (bool isMC, int leptype, int year, string path_input, string path_output)
+int CodeAna_Preselect (int year, bool isMC, int leptype, string path_input, string path_output)
 {
 	// + Timing at job start
 	//----------------------
